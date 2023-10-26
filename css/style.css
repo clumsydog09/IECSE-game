@@ -10,6 +10,17 @@
     height: 100vh;
 }
 
+.cursor{
+    position: absolute;
+    background-color: #fff;
+    width: 1vw;
+    height: 1vw;
+    z-index: 999;
+    border-radius: 50%;
+    transition: 0.25s linear;
+    mix-blend-mode: difference;
+}
+
 .cover {
     position: absolute;
     width: 100vw;
@@ -18,13 +29,14 @@
     z-index: 1;
     background-color: #000;
     top: 0;
-    transition: opacity 1.5s ease;
+    transition: opacity 1s ease;
 }
 
 .icon{
     position: absolute;
-    /* width: 2vw;
-    height: 2vh; */
+    /* pointer-events: none; */
+    width: 10vw;
+    height: 10vw;
     z-index: 2;
     opacity: 1;   /* change this to 0 */
 }
