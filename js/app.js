@@ -15,12 +15,16 @@ const diagonal = Math.sqrt(w*w + h*h);
 let randomX;
 let randomY;
 let vol;
-let maxDistance = 1200;
+let maxDistance = diagonal;
 
 icon.addEventListener("mousedown", function () {
 
     cover.style.opacity = "0";
-    icon.style.display = "none";
+    icon.style.opacity = '0.7';
+    // icon.style.display = "none";
+    setTimeout(() => {
+        icon.classList.add('icon--center');
+    }, 200);
     setTimeout(() => {
         cover.style.display = "none";
         audio.volume = 0.4;
@@ -64,13 +68,11 @@ const mouseHover = function(e){
   
     const distance = Math.sqrt(Math.pow((e.clientX - left), 2) + Math.pow((e.clientY - top), 2));
     vol = checkForVolume(distance);
-    console.log(distance);
     audio.volume = vol;
     audio.play();
 
     const color = getColorBasedOnDistance(distance, maxDistance);
     cover.style.backgroundColor = color;
-    console.log(color);
 }
 
 cover.addEventListener("mousemove", mouseHover);
