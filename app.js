@@ -2,14 +2,14 @@ cover = document.querySelector("#cover");
 icon = document.querySelector("#icon");
 let randomX;
 let randomY;
-let audio = new Audio("audio/tiktok_haaa_meme.mp3");
-
+let audio;
 
 icon.addEventListener("mousedown", function () {
+    // audio.remove();
     cover.style.opacity = "0";
-    cover.style.zIndex = "-1";
     icon.style.opacity = "0";
-    audio.pause();
+    cover.style.zIndex = "-1";
+
 });
 
 function checkForVolume(distance) {
@@ -38,11 +38,12 @@ randomizePosition();
 cover.addEventListener("mousemove", function (e) {
     //this function finds distance of icon from the cursor position and sets volume of audio depending on the distance
 
+    audio = new Audio("audio/tiktok_haaa_meme.mp3");
     let left = parseInt(icon.style.left);
     let top = parseInt(icon.style.top);
 
     const distance = Math.sqrt(Math.pow((e.clientX - left), 2) + Math.pow((e.clientY - top), 2));
-    
+
     let vol = checkForVolume(distance);
     console.log(distance);
     audio.volume = vol;
