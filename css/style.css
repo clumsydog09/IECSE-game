@@ -18,13 +18,17 @@
     z-index: 1;
     background-color: #000;
     top: 0;
-    transition: opacity 1s ease;
+    transition: opacity 1.5s ease;
 }
 
 .icon{
     position: absolute;
-    width: 2vw;
-    height: 2vh;
+    /* width: 2vw;
+    height: 2vh; */
     z-index: 2;
     opacity: 1;   /* change this to 0 */
+}
+
+.icon img{
+    width: 10vw;
 }
