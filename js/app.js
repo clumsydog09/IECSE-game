@@ -49,8 +49,8 @@ const checkForVolume = function (distance) {
 
 const randomizePosition = function () {
 
-    randomX = Math.floor(Math.random() * (window.innerWidth - icon.clientWidth));
-    randomY = Math.floor(Math.random() * (window.innerHeight - icon.clientHeight));
+    randomX = Math.floor(Math.random() * (window.innerWidth - icon.offsetWidth));
+    randomY = Math.floor(Math.random() * (window.innerHeight - icon.offsetHeight));
 
     icon.style.left = randomX + 'px';
     icon.style.top = randomY + 'px';
