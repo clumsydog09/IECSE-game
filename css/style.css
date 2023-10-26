@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    background-image: url("../images/reveal-full.jpg");
+    width: 100vw;
+    height: 100vh;
+}
+
+.cover {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    z-index: 1;
+    background-color: #000;
+    top: 0;
+    transition: opacity 1s ease;
+}
+
+.icon{
+    position: absolute;
+    width: 2vw;
+    height: 2vh;
+    z-index: 2;
+    opacity: 1;   /* change this to 0 */
+}
