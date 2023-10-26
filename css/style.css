@@ -17,7 +17,7 @@
     height: 1vw;
     z-index: 999;
     border-radius: 50%;
-    transition: 0.25s linear;
+    transition: 0.1s linear;
     mix-blend-mode: difference;
 }
 

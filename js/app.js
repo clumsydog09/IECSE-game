@@ -8,6 +8,10 @@ const icon = document.querySelector(".icon");
 const cursor = document.querySelector(".cursor");
 const audio = new Audio("audio/straight.mp3");
 
+const w = window.innerWidth; 
+const h = window.innerHeight; 
+const diagonal = Math.sqrt(w*w + h*h);
+
 let randomX;
 let randomY;
 let vol;
@@ -40,14 +44,7 @@ const getColorBasedOnDistance = function (distance, maxDistance) {
 }
 
 const checkForVolume = function (distance) {
-    if (distance >= 0 && distance < 50)
-        return 1;
-    else if (distance >= 60 && distance < 480)
-        return 0.67;
-    else if (distance >= 480 && distance < 960)
-        return 0.34;
-    else
-        return 0.1;
+    return (1 - distance/diagonal);
 }
 
 const randomizePosition = function () {
@@ -60,11 +57,10 @@ const randomizePosition = function () {
 }
 randomizePosition();
 
-cover.addEventListener("mousemove", function (e) {
-    //this function finds distance of icon from the cursor position and sets volume of audio depending on the distance
-
-    const left = parseInt(icon.style.left);
-    const top = parseInt(icon.style.top);
+const mouseHover = function(e){
+    //left and right are the coordinates of the center of the image.
+    const left = parseInt(icon.style.left) + parseInt(icon.offsetWidth)/2;
+    const top = parseInt(icon.style.top) + parseInt(icon.offsetHeight)/2;
   
     const distance = Math.sqrt(Math.pow((e.clientX - left), 2) + Math.pow((e.clientY - top), 2));
     vol = checkForVolume(distance);
@@ -75,7 +71,10 @@ cover.addEventListener("mousemove", function (e) {
     const color = getColorBasedOnDistance(distance, maxDistance);
     cover.style.backgroundColor = color;
     console.log(color);
-});
+}
+
+cover.addEventListener("mousemove", mouseHover);
+icon.addEventListener("mousemove", mouseHover);
 
 container.addEventListener("mousemove", function(e){
     cursor.style.top = e.y + "px";
