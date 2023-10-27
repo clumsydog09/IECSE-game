@@ -40,7 +40,6 @@ body {
 
 .icon{
     position: absolute;
-    /* pointer-events: none; */
     width: 10vw;
     height: 10vw;
     z-index: 2;
