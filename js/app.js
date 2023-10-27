@@ -4,25 +4,30 @@
 'use strict';
 
 const container = document.querySelector(".container");
+const infocard = document.querySelector(".infocard");
+const start = document.querySelector(".start");
 const cover = document.querySelector(".cover");
 const icon = document.querySelector(".icon");
 const cursor = document.querySelector(".cursor");
 const audio = new Audio("audio/straight.mp3");
 
-const w = window.innerWidth; 
-const h = window.innerHeight; 
-const diagonal = Math.sqrt(w*w + h*h);
+const w = window.innerWidth;
+const h = window.innerHeight;
+const diagonal = Math.sqrt(w * w + h * h);
 
 let randomX;
 let randomY;
 let vol;
 let maxDistance = diagonal;
 
+start.addEventListener("mousedown", function () {
+    infocard.style.display = "none";
+});
+
 icon.addEventListener("mousedown", function () {
 
     cover.style.opacity = "0";
     icon.style.opacity = '0.7';
-    // icon.style.display = "none";
     setTimeout(() => {
         icon.classList.add('icon--center');
     }, 200);
@@ -32,7 +37,7 @@ icon.addEventListener("mousedown", function () {
     }, 1000);
 });
 
-window.onload = function() {
+window.onload = function () {
     audio.volume = 0.5;
     audio.play();
 };
@@ -54,7 +59,7 @@ const getColorBasedOnDistance = function (distance, maxDistance) {
 }
 
 const checkForVolume = function (distance) {
-    return (1 - distance/diagonal);
+    return (1 - distance / diagonal);
 }
 
 const randomizePosition = function () {
@@ -67,11 +72,11 @@ const randomizePosition = function () {
 }
 randomizePosition();
 
-const mouseHover = function(e){
+const mouseHover = function (e) {
     //left and right are the coordinates of the center of the image.
-    const left = parseInt(icon.style.left) + parseInt(icon.offsetWidth)/2;
-    const top = parseInt(icon.style.top) + parseInt(icon.offsetHeight)/2;
-  
+    const left = parseInt(icon.style.left) + parseInt(icon.offsetWidth) / 2;
+    const top = parseInt(icon.style.top) + parseInt(icon.offsetHeight) / 2;
+
     const distance = Math.sqrt(Math.pow((e.clientX - left), 2) + Math.pow((e.clientY - top), 2));
     vol = checkForVolume(distance);
     audio.volume = vol;
@@ -84,7 +89,7 @@ const mouseHover = function(e){
 cover.addEventListener("mousemove", mouseHover);
 icon.addEventListener("mousemove", mouseHover);
 
-container.addEventListener("mousemove", function(e){
+container.addEventListener("mousemove", function (e) {
     cursor.style.top = e.y + "px";
     cursor.style.left = e.x + "px";
 })
