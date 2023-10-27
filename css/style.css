@@ -6,88 +6,27 @@
 
 body {
     overflow: hidden;
-    font-family: 'Montserrat', sans-serif;
-    font-family: 'Poppins', sans-serif;
 }
 
 .container {
+    width: 100vw;
+    height: 100vh;
+    transition: background-image 2s ease;
+}
+
+.container--background{
     background-image: url("../images/reveal-full.jpg");
     background-position: center;
     background-size: cover;
-    width: 100vw;
-    height: 100vh;
 }
 
-.infocard {
-    display: flex;
-    flex-direction: column;
-    padding: 3vw 4vw;
-    position: absolute;
-    width: 30vw;
-    height: 80vh;
-    left: 35vw;
-    top: 10vh;
-    background-color: #ffffff8d;
-    backdrop-filter: blur(20px);
-    z-index: 99;
-    border-radius: 5px;
-    transition: opacity 1s ease;
-
-}
-
-.infocard>h1 {
-    align-self: center;
-    padding-bottom: 3vw;
-}
-
-.colour {
-    width: 2vw;
-    height: 2vw;
-    border-radius: 3px;
-    border: 2px solid black;
-}
-
-#yellow {
-    background-color: #ffae42;
-}
-
-#purple {
-    background-color: #6237a0;
-}
-
-#one {
-    padding-bottom: 1.5vw;
-}
-
-.colourinfodiv {
-    display: flex;
-    gap: 2vw;
-    padding-bottom: 1vw;
-}
-
-.start{
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    font-size: large;
-    text-transform: uppercase;
-    padding: 0.5vw;
-    margin-top: 3vw;
-    align-self: center;
-    border-radius: 3px;
-    width: 15vw;
-}
-
-.start:hover{
-    background-color: #82828290;
-    transition: 0.3s;
-}
-
-.cursor {
+.cursor{
+    display: inline-block;
     position: absolute;
     background-color: #fff;
     width: 1vw;
     height: 1vw;
-    z-index: 999;
+    z-index: 4;
     border-radius: 50%;
     transition: 0.1s linear;
     mix-blend-mode: difference;
@@ -104,16 +43,16 @@ body {
     transition: opacity 2s ease;
 }
 
-.icon {
+.icon{
     position: absolute;
+    /* pointer-events: none; */
     width: 10vw;
     height: 10vw;
     z-index: 2;
-    opacity: 0;
-    /* change this to 0 */
+    opacity: 0;   /* change this to 0 */
 }
 
-.icon--center {
+.icon--center{
     transition: all 1s linear;
     /* marked important to override inline css being injected by js */
     opacity: 0 !important;
@@ -122,6 +61,21 @@ body {
     transform: translate(-50%, -50%) !important;
 }
 
-.icon img {
+.icon img{
     width: 10vw;
+}
+
+.start-msg-box{
+    z-index: 5;
+    height: 100vh;
+    width: 100vw;
+    background-color: #111;
+}
+
+.start-msg{
+    display: inline-block;
+    width: 20rem;
+    height: 10rem;
+    margin: auto;
+    background-color: orange;
 }
