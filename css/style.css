@@ -34,11 +34,10 @@
 
 .icon{
     position: absolute;
-    /* pointer-events: none; */
     width: 10vw;
     height: 10vw;
     z-index: 2;
-    opacity: 1;   /* change this to 0 */
+    opacity: 0;   /* change this to 0 */
 }
 
 .icon img{

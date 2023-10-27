@@ -1,4 +1,5 @@
 //TODO mobile screen
+//TODO add info card in the  beginnning
 
 'use strict';
 
@@ -22,6 +23,11 @@ icon.addEventListener("mousedown", function () {
         audio.volume = 0.4;
     }, 1000);
 });
+
+window.onload = function() {
+    audio.volume = 0.5;
+    audio.play();
+};
 
 
 const getColorBasedOnDistance = function (distance, maxDistance) {
