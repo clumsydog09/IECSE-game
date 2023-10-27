@@ -4,8 +4,14 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow: hidden;
+}
+
 .container {
     background-image: url("../images/reveal-full.jpg");
+    background-position: center;
+    background-size: cover;
     width: 100vw;
     height: 100vh;
 }
@@ -17,7 +23,7 @@
     height: 1vw;
     z-index: 999;
     border-radius: 50%;
-    transition: 0.25s linear;
+    transition: 0.1s linear;
     mix-blend-mode: difference;
 }
 
@@ -29,7 +35,7 @@
     z-index: 1;
     background-color: #000;
     top: 0;
-    transition: opacity 1s ease;
+    transition: opacity 2s ease;
 }
 
 .icon{
@@ -38,6 +44,15 @@
     height: 10vw;
     z-index: 2;
     opacity: 0;   /* change this to 0 */
+}
+
+.icon--center{
+    transition: all 1s linear;
+    /* marked important to override inline css being injected by js */
+    opacity: 0 !important;
+    top: 50vh !important;
+    left: 50vw !important;
+    transform: translate(-50%, -50%) !important;
 }
 
 .icon img{
