@@ -33,7 +33,7 @@ icon.addEventListener("mousedown", function () {
     }, 200);
     setTimeout(() => {
         cover.style.display = "none";
-        audio.volume = 0.4;
+        audio.volume = 0.5;
     }, 1000);
 });
 
