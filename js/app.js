@@ -31,11 +31,12 @@ icon.addEventListener("mousedown", function () {
     icon.style.opacity = '0.7';
     setTimeout(() => {
         icon.classList.add('icon--center');
-    }, 200);
+        container.classList.add('container--background');
+    }, 100);
     setTimeout(() => {
         cover.style.display = "none";
         audio.volume = 0.4;
-    }, 1000);
+    }, 2000);
 });
 
 window.onload = function () {
