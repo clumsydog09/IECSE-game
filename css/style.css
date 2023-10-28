@@ -8,6 +8,7 @@ body {
     overflow: hidden;
     font-family: 'Montserrat', sans-serif;
     font-family: 'Poppins', sans-serif;
+    font-size: large;
 }
 
 .container {
@@ -29,6 +30,8 @@ body {
     top: 10vh;
     background-color: #ffffff8d;
     backdrop-filter: blur(20px);
+    box-shadow: 10px 10px black;
+    border: 5px solid black;
     z-index: 99;
     border-radius: 5px;
     transition: opacity 1s ease;
@@ -37,14 +40,15 @@ body {
 
 .infocard>h1 {
     align-self: center;
-    padding-bottom: 3vw;
+    margin-bottom: 3vw;
+    border-bottom: 5px solid black;
 }
 
 .colour {
     width: 2vw;
     height: 2vw;
     border-radius: 3px;
-    border: 2px solid black;
+    border: 3px solid black;
 }
 
 #yellow {
@@ -74,6 +78,7 @@ body {
     margin-top: 3vw;
     align-self: center;
     border-radius: 3px;
+    border: 3px solid black;
     width: 15vw;
 }
 

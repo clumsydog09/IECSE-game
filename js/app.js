@@ -1,5 +1,6 @@
 //TODO mobile screen
 //TODO add info card in the  beginnning
+//TODO make logo circle
 
 'use strict';
 
