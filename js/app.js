@@ -1,16 +1,16 @@
 //TODO mobile screen
-//TODO add info card in the  beginnning
-//TODO make logo circle
+//replace all mousemove with touchemove
+//replace all mousedown with touchestart
 
 'use strict';
 
-const container = document.querySelector(".container");
-const infocard = document.querySelector(".infocard");
-const start = document.querySelector(".start");
-const cover = document.querySelector(".cover");
-const icon = document.querySelector(".icon");
-const cursor = document.querySelector(".cursor");
-const audio = new Audio("audio/straight.mp3");
+const container = document.querySelector('.container');
+const infocard = document.querySelector('.infocard');
+const start = document.querySelector('.start');
+const cover = document.querySelector('.cover');
+const icon = document.querySelector('.icon');
+const cursor = document.querySelector('.cursor');
+const audio = new Audio('audio/straight.mp3');
 
 const w = window.innerWidth;
 const h = window.innerHeight;
@@ -21,77 +21,175 @@ let randomY;
 let vol;
 let maxDistance = diagonal;
 
-start.addEventListener("mousedown", function () {
-    infocard.style.display = "none";
-});
+const onPC = function () {
+  start.addEventListener('mousedown', function () {
+    infocard.style.display = 'none';
+  });
 
-icon.addEventListener("mousedown", function () {
-
-    cover.style.opacity = "0";
-    icon.style.opacity = '0.7';
-    setTimeout(() => {
-        icon.classList.add('icon--center');
-        container.classList.add('container--background');
-    }, 100);
-    setTimeout(() => {
-        cover.style.display = "none";
-        audio.volume = 0.4;
-    }, 2000);
-});
-
-window.onload = function () {
+  window.onload = function () {
     audio.volume = 0.5;
     audio.play();
-};
+  };
 
+  icon.addEventListener('mousedown', function () {
+    cover.style.opacity = '0';
+    icon.style.opacity = '0.7';
+    setTimeout(() => {
+      icon.classList.add('icon--center');
+      container.classList.add('container--background');
+    }, 100);
+    setTimeout(() => {
+      cover.style.display = 'none';
+      audio.volume = 0.5;
+    }, 2000);
+  });
 
-const getColorBasedOnDistance = function (distance, maxDistance) {
+  const getColorBasedOnDistance = function (distance, maxDistance) {
     let scale = 255 / maxDistance;
 
     let endColor = [98, 55, 160]; //the purplish colour
     let startColor = [255, 174, 66];
 
     const color = startColor.map((start, index) => {
-        const end = endColor[index];
-        const value = start + (end - start) * (distance / maxDistance);
-        return Math.floor(value);
+      const end = endColor[index];
+      const value = start + (end - start) * (distance / maxDistance);
+      return Math.floor(value);
     });
 
     return `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
-}
+  };
 
-const checkForVolume = function (distance) {
-    return (1 - distance / diagonal);
-}
+  const checkForVolume = function (distance) {
+    return 1 - distance / diagonal;
+  };
 
-const randomizePosition = function () {
-
-    randomX = Math.floor(Math.random() * (window.innerWidth - icon.offsetWidth));
-    randomY = Math.floor(Math.random() * (window.innerHeight - icon.offsetHeight));
+  const randomizePosition = function () {
+    randomX = Math.floor(
+      Math.random() * (window.innerWidth - icon.offsetWidth)
+    );
+    randomY = Math.floor(
+      Math.random() * (window.innerHeight - icon.offsetHeight)
+    );
 
     icon.style.left = randomX + 'px';
     icon.style.top = randomY + 'px';
-}
-randomizePosition();
+  };
+  randomizePosition();
 
-const mouseHover = function (e) {
+  const mouseHover = function (e) {
     //left and right are the coordinates of the center of the image.
     const left = parseInt(icon.style.left) + parseInt(icon.offsetWidth) / 2;
     const top = parseInt(icon.style.top) + parseInt(icon.offsetHeight) / 2;
 
-    const distance = Math.sqrt(Math.pow((e.clientX - left), 2) + Math.pow((e.clientY - top), 2));
+    const distance = Math.sqrt(
+      Math.pow(e.clientX - left, 2) + Math.pow(e.clientY - top, 2)
+    );
     vol = checkForVolume(distance);
     audio.volume = vol;
     audio.play();
 
     const color = getColorBasedOnDistance(distance, maxDistance);
     cover.style.backgroundColor = color;
+  };
+
+  cover.addEventListener('touchmove', mouseHover);
+  icon.addEventListener('touchmove', mouseHover);
+
+  container.addEventListener('touchmove', function (e) {
+    cursor.style.top = e.y + 'px';
+    cursor.style.left = e.x + 'px';
+  });
+};
+
+const onMobile = function () {
+  start.addEventListener('touchstart', function () {
+    infocard.style.display = 'none';
+  });
+
+  window.onload = function () {
+    audio.volume = 0.5;
+    audio.play();
+  };
+
+  icon.addEventListener('touchstart', function () {
+    cover.style.opacity = '0';
+    icon.style.opacity = '0.7';
+    setTimeout(() => {
+      icon.classList.add('icon--center');
+      container.classList.add('container--background');
+    }, 100);
+    setTimeout(() => {
+      cover.style.display = 'none';
+      audio.volume = 0.5;
+    }, 2000);
+  });
+
+  const getColorBasedOnDistance = function (distance, maxDistance) {
+    let scale = 255 / maxDistance;
+
+    let endColor = [98, 55, 160]; //the purplish colour
+    let startColor = [255, 174, 66];
+
+    const color = startColor.map((start, index) => {
+      const end = endColor[index];
+      const value = start + (end - start) * (distance / maxDistance);
+      return Math.floor(value);
+    });
+
+    return `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+  };
+
+  const checkForVolume = function (distance) {
+    return 1 - distance / diagonal;
+  };
+
+  const randomizePosition = function () {
+    randomX = Math.floor(
+      Math.random() * (window.innerWidth - icon.offsetWidth)
+    );
+    randomY = Math.floor(
+      Math.random() * (window.innerHeight - icon.offsetHeight)
+    );
+
+    icon.style.left = randomX + 'px';
+    icon.style.top = randomY + 'px';
+  };
+  randomizePosition();
+
+  const mouseHover = function (e) {
+    //left and right are the coordinates of the center of the image.
+    const left = parseInt(icon.style.left) + parseInt(icon.offsetWidth) / 2;
+    const top = parseInt(icon.style.top) + parseInt(icon.offsetHeight) / 2;
+
+    const distance = Math.sqrt(
+      Math.pow(e.clientX - left, 2) + Math.pow(e.clientY - top, 2)
+    );
+    vol = checkForVolume(distance);
+    audio.volume = vol;
+    audio.play();
+
+    const color = getColorBasedOnDistance(distance, maxDistance);
+    cover.style.backgroundColor = color;
+  };
+
+  cover.addEventListener('mousemove', mouseHover);
+  icon.addEventListener('mousemove', mouseHover);
+
+  container.addEventListener('mousemove', function (e) {
+    cursor.style.top = e.y + 'px';
+    cursor.style.left = e.x + 'px';
+  });
+};
+
+function handleResize() {
+  const maxWidth = 768;
+  const currentWidth = window.innerWidth;
+
+  if (currentWidth >= maxWidth) onPC();
+  else onMobile();
 }
 
-cover.addEventListener("mousemove", mouseHover);
-icon.addEventListener("mousemove", mouseHover);
+window.addEventListener('resize', handleResize);
 
-container.addEventListener("mousemove", function (e) {
-    cursor.style.top = e.y + "px";
-    cursor.style.left = e.x + "px";
-})
+// Call the function initially in case the maximum width is already reached on page load
+handleResize();

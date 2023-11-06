@@ -5,6 +5,8 @@
 }
 
 body {
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     font-family: 'Montserrat', sans-serif;
     font-family: 'Poppins', sans-serif;
@@ -17,7 +19,7 @@ body {
     transition: background-image 2s ease;
 }
 
-.container--background{
+.container--background {
     background-image: url("../images/reveal-full.jpg");
     background-position: center;
     background-size: cover;
@@ -73,7 +75,7 @@ body {
     padding-bottom: 1vw;
 }
 
-.start{
+.start {
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     font-size: large;
@@ -86,7 +88,7 @@ body {
     width: 15vw;
 }
 
-.start:hover{
+.start:hover {
     background-color: #82828290;
     transition: 0.3s;
 }
@@ -104,8 +106,8 @@ body {
 
 .cover {
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     opacity: 1;
     z-index: 1;
     background-color: #000;
@@ -119,12 +121,11 @@ body {
     height: 10vw;
     z-index: 2;
     opacity: 0;
-    /* change this to 0 */
+    /* change this to 0*/
 }
 
 .icon--center {
     transition: all 1s linear;
-    /* marked important to override inline css being injected by js */
     opacity: 0 !important;
     top: 50vh !important;
     left: 50vw !important;
@@ -133,4 +134,64 @@ body {
 
 .icon img {
     width: 10vw;
+}
+
+@media (max-width: 768px) {
+
+    .cursor {
+        display: none;
+    }
+
+    .colour {
+        width: 3vw;
+        height: 3vw;
+        border-radius: 3px;
+        border: 3px solid black;
+    }
+
+    .container {
+
+        width: fit-content;
+        height: fit-content;
+        transition: background-image 2s ease;
+    }
+
+    .infocard {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: fit-content;
+        height: fit-content;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff8d;
+        backdrop-filter: blur(20px);
+        box-shadow: 10px 10px black;
+        border: 5px solid black;
+        z-index: 99;
+        border-radius: 5px;
+        transition: opacity 1s ease;
+
+    }
+
+    .cover {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        opacity: 1;
+        z-index: 1;
+        background-color: #000;
+        top: 0;
+        transition: opacity 2s ease;
+    }
+
+    .icon {
+        position: absolute;
+        width: 20vw;
+        height: 20vw;
+        z-index: 2;
+        opacity: 0;
+        /* change this to 0*/
+    }
 }
