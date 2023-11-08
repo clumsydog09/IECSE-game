@@ -1,6 +1,4 @@
 //TODO mobile screen
-//TODO add info card in the  beginnning
-//TODO make logo circle
 
 'use strict';
 
@@ -11,6 +9,7 @@ const cover = document.querySelector(".cover");
 const icon = document.querySelector(".icon");
 const cursor = document.querySelector(".cursor");
 const audio = new Audio("audio/straight.mp3");
+const audioWin = new Audio("audio/mario_power_up.mp3");
 
 const w = window.innerWidth;
 const h = window.innerHeight;
@@ -29,13 +28,15 @@ icon.addEventListener("mousedown", function () {
 
     cover.style.opacity = "0";
     icon.style.opacity = '0.7';
+    audioWin.play();
+    audio.pause();
     setTimeout(() => {
         icon.classList.add('icon--center');
         container.classList.add('container--background');
     }, 100);
     setTimeout(() => {
         cover.style.display = "none";
-        audio.volume = 0.4;
+        // audio.volume = 0.4;
     }, 2000);
 });
 
@@ -92,6 +93,36 @@ cover.addEventListener("mousemove", mouseHover);
 icon.addEventListener("mousemove", mouseHover);
 
 container.addEventListener("mousemove", function (e) {
+    cursor.style.top = e.y + "px";
+    cursor.style.left = e.x + "px";
+})
+
+
+
+start.addEventListener("touchdown", function () {
+    infocard.style.display = "none";
+});
+
+icon.addEventListener("touchdown", function () {
+
+    cover.style.opacity = "0";
+    icon.style.opacity = '0.7';
+    audioWin.play();
+    audio.pause();
+    setTimeout(() => {
+        icon.classList.add('icon--center');
+        container.classList.add('container--background');
+    }, 100);
+    setTimeout(() => {
+        cover.style.display = "none";
+        // audio.volume = 0.4;
+    }, 2000);
+});
+
+cover.addEventListener("touchmove", mouseHover);
+icon.addEventListener("touchmove", mouseHover);
+
+container.addEventListener("touchmove", function (e) {
     cursor.style.top = e.y + "px";
     cursor.style.left = e.x + "px";
 })

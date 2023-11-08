@@ -11,6 +11,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-family: 'Poppins', sans-serif;
     font-size: large;
+    background-color: #000;
 }
 
 .container {
@@ -20,9 +21,12 @@ body {
 }
 
 .container--background {
-    background-image: url("../images/reveal-full.jpg");
+    background-image: url("../images/Date.png");
+    /* background-position: center;*/
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-attachment: fixed;
     background-position: center;
-    background-size: cover;
 }
 
 .infocard {
