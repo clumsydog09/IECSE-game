@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>IECSE-date-reveal</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,30 +15,33 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="infocard">
-            <h1>Find your date???</h1>
+    <div class="container--outer">
 
-            <p id="one">Drag your mouse (or finger) around to find you date.</p>
+        <div class="container container--background">
+            <div class="infocard">
+                <h1>Find your date???</h1>
 
-            <div class="colourinfodiv" id="two">
-                <div class="colour" id="yellow"></div>
-                <div> means hot</div>
+                <p id="one">Drag your mouse (or finger) around to find you date.</p>
+
+                <div class="colourinfodiv" id="two">
+                    <div class="colour" id="yellow"></div>
+                    <div> means hot</div>
+                </div>
+
+                <div class="colourinfodiv" id="three">
+                    <div class="colour" id="purple"></div>
+                    <div> means cold</div>
+                </div>
+
+                <p id="four">(HINT : You can also use the music as a clue.)</p>
+
+                <button class="start">Start Game</button>
+
             </div>
-
-            <div class="colourinfodiv" id="three">
-                <div class="colour" id="purple"></div>
-                <div> means cold</div>
-            </div>
-
-            <p id="four">(HINT : You can also use the music as a clue.)</p>
-
-            <button class="start">Start Game</button>
-
+            <div class="cursor"></div>
+            <div class="cover"></div>
+            <div class="icon"><img src="images/icon.png" alt="IECSE-icon"></div>
         </div>
-        <div class="cursor"></div>
-        <div class="cover"></div>
-        <div class="icon"><img src="images/icon.png" alt="IECSE-icon"></div>
     </div>
     <script src="js/app.js"></script>
 </body>
