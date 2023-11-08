@@ -20,12 +20,8 @@ let randomY;
 let vol;
 let maxDistance = diagonal;
 
-start.addEventListener("mousedown", function () {
-    infocard.style.display = "none";
-});
 
-icon.addEventListener("mousedown", function () {
-
+const iconFound = function() {
     cover.style.opacity = "0";
     icon.style.opacity = '0.7';
     audioWin.play();
@@ -38,7 +34,7 @@ icon.addEventListener("mousedown", function () {
         cover.style.display = "none";
         // audio.volume = 0.4;
     }, 2000);
-});
+}
 
 window.onload = function () {
     audio.volume = 0.5;
@@ -75,6 +71,20 @@ const randomizePosition = function () {
 }
 randomizePosition();
 
+const touchHover = function (e) {
+    e.preventDefault();
+    //left and right are the coordinates of the center of the image.
+    const left = parseInt(icon.style.left) + parseInt(icon.offsetWidth) / 2;
+    const top = parseInt(icon.style.top) + parseInt(icon.offsetHeight) / 2;
+
+    const distance = Math.sqrt(Math.pow((e.touches[0].clientX - left), 2) + Math.pow((e.touches[0].clientY - top), 2));
+    vol = checkForVolume(distance);
+    audio.volume = vol;
+    audio.play();
+
+    const color = getColorBasedOnDistance(distance, maxDistance);
+    cover.style.backgroundColor = color;
+}
 const mouseHover = function (e) {
     //left and right are the coordinates of the center of the image.
     const left = parseInt(icon.style.left) + parseInt(icon.offsetWidth) / 2;
@@ -89,11 +99,42 @@ const mouseHover = function (e) {
     cover.style.backgroundColor = color;
 }
 
-cover.addEventListener("mousemove", mouseHover);
-icon.addEventListener("mousemove", mouseHover);
 
-container.addEventListener("mousemove", function (e) {
-    cursor.style.top = e.y + "px";
-    cursor.style.left = e.x + "px";
-})
 
+//////////////////////////////
+
+if (w<600) {
+    start.addEventListener("touchstart", function () {
+        infocard.style.zIndex = "-1";
+        infocard.style.display = "none";
+    });
+    
+    icon.addEventListener("touchstart", iconFound);
+    
+    cover.addEventListener("touchmove", touchHover);
+    icon.addEventListener("touchmove", touchHover);
+    
+    container.addEventListener("touchmove", function (e) {
+        cursor.style.top = e.y + "px";
+        cursor.style.left = e.x + "px";
+    })
+}
+else{
+
+    start.addEventListener("mousedown", function () {
+        infocard.style.zIndex = "-1";
+        infocard.style.display = "none";
+    });
+    
+    icon.addEventListener("mousedown", iconFound);
+    
+    cover.addEventListener("mousemove", mouseHover);
+    icon.addEventListener("mousemove", mouseHover);
+    
+    container.addEventListener("mousemove", function (e) {
+        cursor.style.top = e.y + "px";
+        cursor.style.left = e.x + "px";
+    })
+}
+
+console.log(w);
