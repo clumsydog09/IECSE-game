@@ -149,8 +149,8 @@ body {
 
 .icon {
     position: absolute;
-    width: 10vw;
-    height: 10vw;
+    width: 5rem;
+    height: 5rem;
     z-index: 2;
     opacity: 0;
     /* change this to 0*/
@@ -165,7 +165,7 @@ body {
 }
 
 .icon img {
-    width: 10vw;
+    width: 5rem;
 }
 
 @media (max-width: 1100px) {
@@ -176,6 +176,10 @@ body {
 
     .infocard h1{
         font-size: 1.8rem;
+    }
+
+    .icon img{
+        width: 4rem;
     }
 }
 
@@ -191,5 +195,9 @@ body {
 
     .infocard h1{
         font-size: 1.6rem;
+    }
+
+    .icon img{
+        width: 3.2rem;
     }
 }
